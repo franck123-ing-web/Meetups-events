@@ -26,7 +26,7 @@ export const EVENTS: Event[] = [
     title: "Conférence JavaScript",
     date: "10 Août 2026",
     location: "Marseille",
-    image: "https://www.bing.com/images/search?view=detailV2&ccid=FT7ePY9%2b&id=5ABAB76D3B9835BF68AD9B6F3286E20A3DD21666&thid=OIP.FT7ePY9-Xff68SIZsINsBgHaE7&mediaurl=https%3a%2f%2fa.cdn-hotels.com%2fgdcs%2fproduction104%2fd941%2f7c08a4f7-d6f8-4fbe-a079-9d377a677052.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.153ede3d8f7e5df7faf12219b0836c06%3frik%3dZhbSPQrihjJvmw%26pid%3dImgRaw%26r%3d0&exph=1066&expw=1600&q=marseille&FORM=IRPRST&ck=897C3B74D2E73A8110033136F5E375AB&selectedIndex=0&itb=0&mode=overlay",
+    image: "https://a.cdn-hotels.com/gdcs/production104/d941/7c08a4f7-d6f8-4fbe-a079-9d377a677052.jpg",
     description: "Une conférence dédiée aux nouvelles technologies JavaScript."
   },
 

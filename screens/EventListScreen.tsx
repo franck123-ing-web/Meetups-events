@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 import {
-  SafeAreaView,
   View,
   Text,
   TextInput,
   FlatList,
   StyleSheet
 } from "react-native";
+
 import EventCard from "../components/EventCard";
 import { EVENTS } from "../data/events";
 import { Event } from "../types/Event";
-
 export default function EventListScreen() {
   const [search, setSearch] = useState("");
 
