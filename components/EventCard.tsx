@@ -7,91 +7,92 @@ import {
   TouchableOpacity,
   Alert
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Event } from "../types/Event";
 
-interface Props {
+type Props = {
   event: Event;
-}
+};
 
 export default function EventCard({ event }: Props) {
+  const navigation = useNavigation<any>();
+  const [liked, setLiked] = useState(false);
 
-  const [favorite, setFavorite] = useState(false);
-
-  const toggleFavorite = () => {
-    const newState = !favorite;
-    setFavorite(newState);
-
-    if (newState) {
-      Alert.alert("Favori ajouté", event.title + " ajouté aux favoris");
-    }
+  const toggleLike = () => {
+    setLiked(!liked);
+    Alert.alert(
+      liked ? "Retiré des favoris" : "Ajouté aux favoris"
+    );
   };
 
   return (
-    <View style={styles.card}>
-
-      <Image
-        source={{ uri: event.image }}
-        style={styles.image}
-      />
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() =>
+        navigation.navigate("EventDetail", { event })
+      }
+    >
+      <Image source={{ uri: event.image }} style={styles.image} />
 
       <View style={styles.content}>
-
-        <View style={styles.row}>
+        <View style={styles.header}>
           <Text style={styles.title}>{event.title}</Text>
 
-          <TouchableOpacity onPress={toggleFavorite}>
-            <Text style={styles.heart}>
-              {favorite ? "❤️" : "🤍"}
+          <TouchableOpacity onPress={toggleLike}>
+            <Text style={[styles.heart, liked && styles.heartActive]}>
+              ♥
             </Text>
           </TouchableOpacity>
         </View>
 
         <Text style={styles.info}>📅 {event.date}</Text>
         <Text style={styles.info}>📍 {event.location}</Text>
-
       </View>
-
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-
   card: {
     backgroundColor: "#fff",
-    borderRadius: 12,
-    marginBottom: 16,
+    borderRadius: 14,
     overflow: "hidden",
-    elevation: 3
+    marginBottom: 16,
+    elevation: 3,
   },
 
   image: {
     width: "100%",
-    height: 180
+    height: 180,
   },
 
   content: {
-    padding: 12
+    padding: 12,
   },
 
-  row: {
+  header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   title: {
     fontSize: 18,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
 
   heart: {
-    fontSize: 22
+    fontSize: 22,
+    color: "#ccc",
+  },
+
+  heartActive: {
+    color: "red",
   },
 
   info: {
-    color: "#666",
-    marginTop: 4
-  }
-
+    fontSize: 14,
+    marginTop: 4,
+    color: "#555",
+  },
 });
