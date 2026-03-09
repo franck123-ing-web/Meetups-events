@@ -1,6 +1,6 @@
 import React from "react";
-import EventListScreen from "./screens/EventListScreen";
+import AppNavigator from "./navigation/AppNavigator";
 
 export default function App() {
-  return <EventListScreen />;
+  return <AppNavigator />;
 }
